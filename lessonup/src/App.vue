@@ -36,6 +36,10 @@ import store from './vuex/store'
 // Import the menu component to use
 import Menu from './components/Menu'
 
+/* Import the Translate.js interface from services folder. We need to access its methods here. See comments in Translate.js for info about
+    what it does */
+import Translate from '@/services/Translate'
+
 export default {
   name: 'App',
   store: store,
@@ -55,9 +59,32 @@ export default {
     properties inside this component updates whenever their values in the Vuex store are updated */
   computed: mapState(['userLang', 'userType', 'loggedIn', 'username', 'userId', 'timedOut']),
 
+  methods: {
+
+    translate(outputLang) {
+
+      // Iterate through the properties of this component's data object
+      for (const[key, value] of Object.entries(this.$data)) {
+        // Translate that string
+        Translate.translate({text: this.$data[key], target: outputLang})
+        .then(response => this.$data[key] = response.data.translatedText)
+        .catch(error => console.log(error));
+      }
+
+    },
+
+  },
+
   // Watch says to watch a property in this component for changes and run a provided function when there is a change
   watch: {
 
+    userLang: function() {
+      if (this.userLang !== 'en') {
+        this.translate(this.userLang);
+      }
+    },
+    
+    
     // If loggedIn property changes due to logout, perform the logout state mutation (see src/vuex/store.js line 55)
     loggedIn: function() {
       if (!this.loggedIn) {

@@ -46,19 +46,19 @@
           <!-- about section  -->
     </div>
         <div id="about">
-          <p id="abouttext" style="color:black;">An app for parents whose native language is not English to get help for their childrens homework</p> </div>
+          <p id="abouttext" style="color:black;">{{about}}</p> </div>
         <div id="numberone">
          
 <!-- home pahe section with ullustration using displayinlone block to have it all in one line at 100% while making sure it is resposive while zooming in and out-->
         <div class="inline">
-            <li style="width:60vw;color: black;"> <p>Tutors in England speaking over 21 languages</p></li>
+            <li style="width:60vw;color: black;"> <p>{{tutors}}</p></li>
             <li >   <img src="../assets/illustrationhome.png" alt="Illustration"></li>
         </div>
     </div>
                     <!-- home pag e image under text secntions-->
         <div class="backgroundslide">
              <div class="imagetext">
-                 <h1>JOIN US</h1>
+                 <h1>{{join}}</h1>
                   </div>
         </div>
 
@@ -89,6 +89,9 @@ export default {
         welcome, dropdownLabel, languageList, login & register are all automatically translated by the watch method
          when the userLang property is anything other than 'en' */
       welcome: "Welcome to LessonUp",
+      about: "An app for parents whose native language is not English to get help for their childrens homework",
+      tutors: "Tutors in England speaking over 21 languages",
+      join: "JOIN US",
       dropdownLabel: 'Select language: ',
       languageList: [],
       selectedLanguage: 'en',
