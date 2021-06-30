@@ -24,7 +24,7 @@ module.exports = function(app) {
 	const timeFormatRegex = /^(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])$/;
 
 	// API key used by Google Cloud services to link HTTP requests to our Google user account
-	const api = 'AIzaSyBaeOPw8Qp46ulLnayRTMPCFEkJ2UyOj7g';
+	const api = '*****';
 
 	/* Create a Google Translate API instance so we can use its methods.
 		You can look at the methods in server/src/node_modules/google-translate/lib/main.js
